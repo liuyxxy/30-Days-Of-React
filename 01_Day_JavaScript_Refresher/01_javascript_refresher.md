@@ -965,7 +965,7 @@ const webTechs = [
 6. Declare an array variable name itCompanies and assign initial values Facebook, Google, Microsoft, Apple, IBM, Oracle and Amazon
 7. Print the array using _console.log()_
 8. Print the number of companies in the array
-9. Print the first company, middle and last company
+9.  Print the first company, middle and last company
 10. Print out each company
 11. Change each company name to uppercase one by one and print them out
 12. Print the array like as a sentence: Facebook, Google, Microsoft, Apple, IBM,Oracle and Amazon are big IT companies.
