@@ -1,25 +1,62 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from 'react';
+import Header from './parts/Header';
+import Main from './parts/Main';
+import Footer from './parts/Footer';
+import pfp from './assets/pfp.png'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+    state = {
+        light: true, 
+        style: {
+            colour: '',
+            backgroundColor: ''
+        },
+        listStyle: {
+            colour: '', 
+            backgroundColor: ''
+        }
+    }
+    changeBackground = () => {
+        let darkBg = {
+            backgroundColor: '#121212',
+            color: '#ECECED',
+            borderTop: '1px solid white'
+        }
+        let lightBg = {
+            backgroundColor: '',
+            color: ''
+        }
+        let lightList = {
+            colour: '', 
+            backgroundColor: ''
+        }
+        let darkList = {
+            colour: '#ECECED',
+            backgroundColor: '#648383'
+        }
+          console.log(darkBg)
+          let bg = this.state.light? darkBg : lightBg
+          let list = this.state.light? darkList : lightList
+          this.setState({ style: bg, listStyle: list, light: !this.state.light })
+    }
+
+    render() {
+        const skills = ['HTML', 'CSS', 'Javascript', 'React', 'Java', 'C', 'Python', 'Github', 'PostgreSQL', 'Flask']
+        const user = {
+            firstName: 'Yuxi',
+            lastName: 'Liu',
+            occupation: 'CS Student',
+            profilePic: pfp,
+            skillList: skills
+        }
+        return (
+            <div className="app">
+                <Header style={this.state.style}/>
+                <Main user={user} bgStyle={this.state.style} listStyle={this.state.listStyle}/>
+                <Footer style={this.state.style} changeBackground={this.changeBackground}/>
+            </div>
+        )
+    }
 }
 
-export default App;
+export default App
