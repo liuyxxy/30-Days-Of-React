@@ -1,17 +1,36 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+// index.js
+import React, { Component } from 'react'
+import ReactDOM from 'react-dom'
 
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
-);
+class App extends Component {
+  state = {
+    style: {
+      bottom: '',
+      left: ''
+    }
+  }
+  randomYPosition = () => {
+    return Math.floor(Math.random() * 40) + 'em'
+  }
+  randomXPosition = () => {
+    return Math.floor(Math.random() * 70) + 'em'
+  }
+  handleMouseEnter = (e) => {
+    const newStyle = {
+      bottom: this.randomYPosition(),
+      left: this.randomXPosition()
+    }
+    this.setState({ style: newStyle })
+  }
+  render() {
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+    return (
+      <div className='box' style={this.state.style} onMouseEnter={this.handleMouseEnter}>
+        30 days of react
+      </div>
+    )
+  }
+}
+
+const rootElement = document.getElementById('root')
+ReactDOM.render(<App />, rootElement)
